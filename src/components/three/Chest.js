@@ -9,7 +9,7 @@ import React, { useRef } from "react"
 
 const modelPath = "../../../coffre/model.glb"
 
-export default function Model(props) {
+export default function Chest(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF(modelPath)
 
