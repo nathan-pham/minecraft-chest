@@ -9,12 +9,14 @@ import Floor from "./components/three/Floor"
 softShadows()
 
 export default function App() {
+  const [open, setOpen] = useState(false)
+
   return (
     <>
       <Canvas colorManagement shadows camera={{ position: [-5, 4, 4], fov: 40 }}>
         <Lights />
         <Suspense fallback={null}>
-          <Chest />
+          <Chest open={open} setOpen={setOpen} />
           <Floor />
         </Suspense>
       </Canvas>

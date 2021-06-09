@@ -1,17 +1,25 @@
+import { useSpring, a } from "@react-spring/three"
 import { useGLTF } from "@react-three/drei"
 import React, { useRef } from "react"
 
 const modelPath = "../../../coffre/model.glb"
 
-export default function Chest(props) {
+export default function Chest({ open, setOpen }) {
   const group = useRef()
   const { nodes, materials } = useGLTF(modelPath)
 
+  const handleOpen = () => setOpen(!open) 
+
+  const openAnimation = useSpring({
+    rotation: open ? [0, 0, 0] : [1.61, 0, 0],
+    position: open ? [0, -1.5, 0] : [0, 0, 0]
+  })
+
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group position={[0, -0.99, 0]}>
+    <group onClick={handleOpen} ref={group} dispose={null}>
+      <a.group rotation={openAnimation.position} position={[0, -0.99, 0]}>
         <primitive object={nodes.Bone} />
-        <primitive object={nodes.Bone001} />
+        <a.primitive rotation={openAnimation.rotation} object={nodes.Bone001} />
         <skinnedMesh
           castShadow
           receiveShadow
@@ -19,7 +27,7 @@ export default function Chest(props) {
           geometry={nodes.Cube.geometry}
           skeleton={nodes.Cube.skeleton}
         />
-      </group>
+      </a.group>
     </group>
   )
 }
