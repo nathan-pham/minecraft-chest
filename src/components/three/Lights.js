@@ -3,7 +3,7 @@ import React from "react"
 export default function Lights() {
     return (
         <>
-            <fog attach='fog' args={["#fff", 0, 22]} />
+            <fog attach="fog" args={["#fff", 0, 22]} />
             <ambientLight intensity={0.4} />
             <directionalLight
                 castShadow

@@ -1,6 +1,6 @@
+import React, { Suspense, useState } from "react"
 import { softShadows } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import React, { Suspense } from "react"
 
 import Lights from "./components/three/Lights"
 import Chest from "./components/three/Chest"
@@ -11,7 +11,7 @@ softShadows()
 export default function App() {
   return (
     <>
-      <Canvas colorManagement shadowMap camera={{ position: [-5, 4, 4], fov: 40 }}>
+      <Canvas colorManagement shadows camera={{ position: [-5, 4, 4], fov: 40 }}>
         <Lights />
         <Suspense fallback={null}>
           <Chest />
