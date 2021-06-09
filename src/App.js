@@ -1,7 +1,7 @@
 import { softShadows, Loader, OrbitControls } from "@react-three/drei"
 import { Canvas, useThree } from "@react-three/fiber"
 import React, { Suspense, useState } from "react"
-import { useSpring } from "@react-spring/core"
+import { useSpring } from "react-spring"
 
 import Lights from "./components/three/Lights"
 import Chest from "./components/three/Chest"
@@ -18,7 +18,7 @@ const ZoomOrbital = () => {
     y: 4,
     z: 4,
 
-    onFrame: ({x, y, z}) => {
+    onChange: ({ value: { x, y, z } }) => {
       camera.position.set(x, y, z)
     }
   })
